@@ -1,0 +1,18 @@
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <%= erb :"/_errors", locals:{error:error}%>
+  <% end %>
+<% end %>
+
+<form action="/users" method="post">
+  <p><label for="username">Username:</label>
+  <input type="text" name="user[username]" placeholder="Bro-Name"><p>
+
+  <p><label for="email">Email:</label>
+  <input type="text" name="user[email]" placeholder="Bro-Mail"><p>
+
+  <p><label for="password">Password:</label>
+  <input type="password" name="user[password]" placeholder="Secret Bro Word"><p>
+
+  <input type="submit" value="Register">
+</form>

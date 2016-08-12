@@ -1,0 +1,136 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.question-container, .answer-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.title-container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.question-show-page{
+  height: 50px;
+}
+
+.show-page-question-container{
+  margin-bottom: 50px;
+}
+
+.question-show-title{
+  margin-bottom: 0px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  width: 48px;
+  display: inline-block;
+}
+
+.vote-total{
+  padding-top: 35px;
+  width: 30px;
+  font-size: 1.4em;
+}
+
+.answer-vote-total{
+  padding-top: 15px;
+  width: 30px;
+  font-size: 1.4em;
+}
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-top: 12.5px solid transparent;
+  border-bottom: 25px solid red;
+  padding: 0px;
+  background-color: #FF69B4;
+  box-shadow: none;
+  margin-bottom: 5px;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-bottom: 12.5px solid transparent;
+  border-top: 25px solid red;
+  padding: 0px;
+  background-color: #FF69B4;
+}
+
+body {
+  padding-left: 30px;
+  background-color: #FF69B4;
+}
+
+.title {
+  width: 200px;
+  display: inline-block;
+  font-size: 2em;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 10px;
+}
+
+#header-style{
+  border-bottom: 1px black solid;
+  margin-right: 60px;
+}
+
+.title a{
+  margin: 0;
+  width: 200px;
+}
+
+.no-text-decoration, .title{
+  text-decoration: none;
+  color: black;
+}
+
+.no-text-decoration:hover{
+  color: pink;
+}
+
+.question-list-title{
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 3em
+}
+
+.navbar {
+  float: right;
+  padding-right: 0px;
+  margin-top: 20px
+}
+
+ul {
+  list-style-type: none;
+}
+
+.links {
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.nav-border {
+  border-right: 1px solid;
+}
+
+.metadata {
+  font-size: .7em
+}

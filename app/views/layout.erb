@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/application.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Astloch:700|Inknut+Antiqua|Macondo+Swash+Caps" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+  <title>BROverflow</title>
+</head>
+<body >
+  <header id="header-style">
+    <h1 class="title"><a href="/questions" class ="title">BROverflow</a></h1>
+    <%= erb :"_nav" %>
+  </header>
+  <p><%= yield %></p>
+</body>
+</html>

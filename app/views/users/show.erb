@@ -1,0 +1,12 @@
+<h3>Welcome, <%=current_user.username.capitalize%>!</h3>
+<%questions = Question.where(user_id: current_user.id)%>
+<% questions.each do |question| %>
+  <table>
+    <tr>
+      <th><a href="/questions/<%= question.id %>"><%= question.title%></a></th>
+    </tr>
+    <tr>
+      <td><%= question.body%></td>
+    </tr>
+  </table>
+<% end %>

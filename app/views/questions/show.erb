@@ -1,0 +1,123 @@
+<div class="question-container show-page-question-container">
+  <div class="container question-show-page">
+    <% if logged_in? %>
+      <% if @question.user_has_voted?(current_user) %>
+
+        <form method="post" action="/votes/<%= @question.get_vote_id(current_user) %>">
+          <input type="hidden" name="_method" value="put">
+          <button type="submit" name="vote" class= "triangle-up" value="1"></button>
+          <button type="submit" name="vote" class= "triangle-down" value="-1"></button>
+        </form>
+      <% else %>
+        <form method="post" action="/votes" >
+          <input type="hidden" name="question_id" value="<%= @question.id %>">
+          <button type="submit" name="vote" class= "triangle-up" value="1"></button>
+          <button type="submit" name="vote" class="triangle-down" value="-1"></button>
+        </form>
+
+      <% end %>
+    <% end %>
+  </div>
+
+  <p class="vote-total"><%= @question.total_votes %></p>
+  <div class="title-container">
+    <h3 class="question-show-title"><%= @question.title %></h3>
+    <p><%= @question.body %> </p>
+    <p><%= @question.user.username %></p>
+  </div>
+</div>
+
+<% if allowed?(@question) %>
+  <form method="post" action="/questions/<%= @question.id %>">
+    <input type="hidden" name="_method" value="put">
+    <button type="submit">edit question</button>
+  </form>
+<% end %>
+
+<% if allowed?(@question) %>
+ <form method="post" action="/questions/<%= @question.id %>">
+  <%= erb :'/_delete' %>
+ </form>
+<% end %>
+
+<% @question.comments.each do |comment| %>
+  <p> <%= comment.text %> </p>
+  <p> <%= comment.user.username %> </p>
+
+  <% if allowed?(comment) %>
+    <form method="post" action="/questions/<%= @question.id %>/comments/<%= comment.id%>">
+    <%= erb :'/_delete' %>
+    </form>
+  <% end %>
+<% end %>
+<form method="post" action="/questions/<%= @question.id %>/comments">
+<%= erb :"_addcomments" %>
+<button name="commentable" type="submit" value="<%= @question.id %>">comment</button>
+</form>
+
+
+<% @answers.each do |answer| %>
+  <div class="answer-container">
+    <div class="container">
+      <% if logged_in? %>
+        <% if answer.user_has_voted?(current_user) %>
+          <form method="post" action="/votes/<%= answer.get_vote_id(current_user) %>">
+            <input type="hidden" name="_method" value="put">
+            <button type="submit" name="vote" class= "triangle-up" value="1"></button>
+            <button type="submit" name="vote" class="triangle-down" value="-1"></button>
+          </form>
+        <% else %>
+          <form method="post" action="/votes" >
+            <input type="hidden" name="answer_id" value="<%= answer.id %>">
+            <button type="submit" name="vote" class= "triangle-up" value="1"></button>
+            <button type="submit" name="vote" class="triangle-down" value="-1"></button>
+          </form>
+        <% end %>
+      <% end %>
+    </div>
+    <p class="answer-vote-total"><%= answer.total_votes %></p>
+    <div class="title-container">
+      <p><%= answer.text %></p>
+      <p><strong><%= answer.user.username %></strong></p>
+    </div>
+  </div>
+
+  <% if allowed?(@question) %>
+      <form method="post" action="/answers/<%= answer.id %>">
+      <input type="hidden" name="_method" value="put">
+      <button type="submit">edit answer</button>
+    </form>
+  <% end %>
+
+  <% if allowed?(answer) %>
+    <form method="post" action="/answers/<%= answer.id %>">
+    <%= erb :'/_delete' %>
+    </form>
+  <% end %>
+
+  <% answer.comments.each do |comment| %>
+    <p> <%= comment.text %> </p>
+    <p><strong><%= comment.user.username %></strong></p>
+
+    <% if allowed?(comment) %>
+      <form method="post" action="/answers/<%= answer.id %>/comments/<%= comment.id%>">
+      <%= erb :'/_delete' %>
+      </form>
+
+    <% end %>
+  <% end %>
+
+  <form method="post" action="/answers/<%= answer.id %>/comments">
+  <%= erb :"_addcomments" %>
+  <button name="commentable" type="submit" value="<%= answer.id %>">comment</button>
+  </form>
+<% end %>
+<form method="post" action="/answers">
+  <label for="text">Add your answer</label>
+  <br>
+  <input id="text_input" name="answer[text]" type="text">
+  <br>
+  <button name="question" type="submit" value="<%= @question.id %>">answer</button>
+</form>
+
+

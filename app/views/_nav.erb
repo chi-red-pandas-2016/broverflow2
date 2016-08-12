@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <ul>
+    <% if logged_in? %>
+    <li class="links nav-border"><a class="no-text-decoration" href="/">Home</a></li>
+    <li class="links nav-border "><a class="no-text-decoration" href="/logout">Logout</a></li>
+
+    <li class="links"><a class="no-text-decoration"  href="/users/<%= current_user.id %>">Profile</a></li>
+    <% else %>
+    <li class="links nav-border"><a class="no-text-decoration" href="/questions">Home</a></li>
+    <li class="links nav-border"><a class="no-text-decoration" href="/login">Log in</a></li>
+    <li class="links"><a class="no-text-decoration" href="/users/new">Register</a></li>
+    <% end %>
+  </ul>
+</nav>
+

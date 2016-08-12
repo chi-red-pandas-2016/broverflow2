@@ -1,0 +1,13 @@
+<p><%= @errors %></p>
+<form method="post" action="/questions">
+  <label for="title">Title</label>
+  <br>
+  <input id="title_input" name="question[title]" type="text" value="<%= @question.try(:question)%>">
+  <br>
+  <label for="body">Body</label>
+  <br>
+  <input id="body_input" name="question[body]" type="text" value="<%= @question.try(:question)%>">
+  <br>
+  <br>
+  <input type="submit" value="Submit question" class="button">
+</form>
